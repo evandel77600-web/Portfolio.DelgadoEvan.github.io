@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evan Delgado – Technicien systèmes, réseaux et helpdesk</title>
+<meta name="description" content="Portfolio d'Evan Delgado, étudiant en BTS SIO option SISR, à la recherche d'une alternance en helpdesk ou en systèmes et réseaux.">
+<meta name="theme-color" content="#EDF0EE">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #EDF0EE;
+  --ink: #17262E;
+  --muted: #4E6068;
+  --line: #C6D0CD;
+  --teal: #0B7A85;
+  --orange: #D95F23;
+  --on-ink: #EDF0EE;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --text: "Newsreader", Georgia, "Times New Roman", serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #101A1F;
+    --ink: #E6ECEA;
+    --muted: #9AAAB0;
+    --line: #2B3B42;
+    --teal: #55C4CF;
+    --orange: #F28A52;
+    --on-ink: #101A1F;
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--text);
+  font-size: 1.125rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 3px; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.1; margin: 0; letter-spacing: -0.02em; }
+
+.shell {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 14rem minmax(0, 44rem);
+  gap: 4.5rem;
+}
+
+/* Navigation : un câble avec un port par section */
+.nav { position: sticky; top: 0; align-self: start; padding-top: 3.5rem; }
+.nav ul { list-style: none; margin: 0; padding: 0; position: relative; }
+.nav ul::before {
+  content: ""; position: absolute; left: 7px; top: 12px; bottom: 12px;
+  width: 2px; background: var(--line);
+}
+.nav a {
+  position: relative; display: block; padding: 0.3rem 0 0.3rem 2rem;
+  font-family: var(--display); font-weight: 500; font-size: 1rem;
+  color: var(--muted); text-decoration: none;
+}
+.nav a::before {
+  content: ""; position: absolute; left: 0; top: 50%; translate: 0 -50%;
+  width: 16px; height: 16px; border-radius: 50%;
+  border: 2px solid var(--line); background: var(--bg);
+}
+.nav a:hover { color: var(--ink); }
+.nav a[aria-current="true"] { color: var(--ink); font-weight: 700; }
+.nav a[aria-current="true"]::before { background: var(--orange); border-color: var(--orange); }
+
+/* Héros */
+.hero { padding: 4.5rem 0 3rem; }
+.hero h1 {
+  font-size: clamp(3.4rem, 9vw, 6.2rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 0.92;
+}
+.hero .role {
+  font-family: var(--display); font-weight: 500;
+  font-size: clamp(1.25rem, 2.4vw, 1.55rem);
+  margin: 1.4rem 0 0.4rem; letter-spacing: -0.01em;
+}
+.status { display: flex; align-items: center; gap: 0.6rem; color: var(--muted); margin: 0 0 1.8rem; }
+.status::before { content: ""; width: 0.7rem; height: 0.7rem; border-radius: 50%; background: var(--orange); flex: none; }
+.actions { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+.btn {
+  font-family: var(--display); font-weight: 700; font-size: 1rem;
+  padding: 0.75rem 1.3rem; border-radius: 6px; text-decoration: none;
+  border: 2px solid var(--ink);
+}
+.btn.solid { background: var(--ink); color: var(--on-ink); }
+.btn.solid:hover { background: var(--orange); border-color: var(--orange); color: #fff; }
+.btn.line:hover { background: var(--ink); color: var(--on-ink); }
+.topology { margin: 3rem 0 0; }
+.topology svg { width: 100%; max-width: 30rem; height: auto; display: block; }
+.topology figcaption { color: var(--muted); font-size: 0.95rem; margin-top: 0.6rem; max-width: 34rem; }
+.topology .box { fill: var(--bg); stroke: var(--ink); stroke-width: 2; }
+.topology .t { fill: var(--ink); font-family: var(--display); font-size: 12px; font-weight: 500; }
+.topology .l10 { stroke: var(--teal); stroke-width: 3; fill: none; }
+.topology .l20 { stroke: var(--orange); stroke-width: 3; fill: none; }
+.topology .tt { fill: var(--teal); font-family: var(--display); font-size: 11px; font-weight: 700; }
+.topology .to { fill: var(--orange); font-family: var(--display); font-size: 11px; font-weight: 700; }
+
+/* Sections */
+section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
+section > h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 700; margin-bottom: 1.6rem; }
+section p { margin: 0 0 1.1em; }
+.lead { font-size: 1.25rem; }
+.chips { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0; padding: 0; }
+.chips li {
+  font-family: var(--display); font-weight: 500; font-size: 0.9rem;
+  border: 1px solid var(--line); border-radius: 4px; padding: 0.1rem 0.6rem;
+}
+
+/* Compétences */
+.skills { display: grid; grid-template-columns: 11rem 1fr; gap: 1.3rem 1.5rem; margin: 0; }
+.skills dt { font-family: var(--display); font-weight: 700; padding-top: 0.15rem; }
+.skills dd { margin: 0; }
+
+/* Expérience, formation : de vraies chronologies */
+.timeline { display: grid; gap: 2.4rem; margin: 0; padding: 0; list-style: none; }
+.entry { display: grid; grid-template-columns: 9.5rem 1fr; gap: 0.5rem 1.5rem; }
+.entry time { font-family: var(--display); font-weight: 500; color: var(--muted); font-size: 0.98rem; padding-top: 0.3rem; }
+.entry h3 { font-size: 1.3rem; font-weight: 700; }
+.entry .org { color: var(--teal); font-weight: 600; margin: 0.15rem 0 0.6rem; }
+.entry ul { margin: 0; padding-left: 1.1rem; }
+.entry li { margin-bottom: 0.3rem; }
+
+/* Projets */
+.project { padding: 1.8rem 0; border-top: 1px solid var(--line); }
+.project:first-of-type { border-top: 0; padding-top: 0; }
+.project h3 { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem; }
+.project figure { margin: 1rem 0 0; }
+.project img { max-width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--line); display: block; }
+.project .chips { margin-top: 0.8rem; }
+.subhead { font-size: 1.15rem; font-weight: 700; color: var(--teal); margin: 2.2rem 0 1rem; }
+
+/* Loisirs */
+.hobbies { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4rem 2.5rem; }
+.hobby { border-top: 3px solid var(--orange); padding-top: 0.9rem; }
+.hobby h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
+.hobby p { font-size: 1.02rem; line-height: 1.55; margin: 0 0 0.7em; }
+.hobby .gain { font-style: italic; color: var(--teal); margin: 0; }
+.hobby .gain b { font-weight: 600; }
+
+/* Contact */
+.contact-mail { font-family: var(--display); font-weight: 700; font-size: clamp(1.3rem, 3.5vw, 1.9rem); letter-spacing: -0.01em; overflow-wrap: anywhere; }
+footer { padding: 2rem 0 3rem; color: var(--muted); font-size: 0.95rem; border-top: 1px solid var(--line); }
+
+/* Mobile */
+@media (max-width: 62rem) {
+  .shell { grid-template-columns: minmax(0, 1fr); gap: 0; padding: 0 1.25rem; }
+  .nav {
+    position: sticky; top: 0; z-index: 5; padding: 0.5rem 0;
+    background: var(--bg); border-bottom: 1px solid var(--line);
+    margin: 0 -1.25rem; padding-inline: 1.25rem; overflow-x: auto;
+  }
+  .nav ul { display: flex; gap: 1.2rem; white-space: nowrap; }
+  .nav ul::before { display: none; }
+  .nav a { padding: 0.4rem 0; border-bottom: 3px solid transparent; }
+  .nav a::before { display: none; }
+  .nav a[aria-current="true"] { border-bottom-color: var(--orange); }
+  .hero { padding-top: 2.5rem; }
+}
+@media (max-width: 40rem) {
+  .skills { grid-template-columns: 1fr; gap: 0.4rem; }
+  .skills dd { margin-bottom: 0.9rem; }
+  .entry { grid-template-columns: 1fr; }
+  .hobbies { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <nav class="nav" aria-label="Sections du site">
+    <ul>
+      <li><a href="#profil">Profil</a></li>
+      <li><a href="#competences">Compétences</a></li>
+      <li><a href="#experience">Expérience</a></li>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#formation">Formation</a></li>
+      <li><a href="#loisirs">Loisirs</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="hero" id="profil">
+      <h1>Evan<br>Delgado</h1>
+      <p class="role">Technicien helpdesk, systèmes et réseaux</p>
+      <p class="status">Étudiant en BTS SIO option SISR, à la recherche d'une alternance</p>
+      <div class="actions">
+        <a class="btn solid" href="mailto:evandel77600@gmail.com">Me contacter</a>
+        <a class="btn line" href="CV_Evan_Delgado.pdf">Télécharger mon CV</a>
+      </div>
+
+      <figure class="topology">
+        <svg viewBox="0 0 480 250" role="img" aria-label="Schéma d'un réseau avec un routeur, deux commutateurs et quatre postes répartis en deux VLAN">
+          <path class="l10" d="M215 52 L120 112"/>
+          <path class="l20" d="M265 52 L360 112"/>
+          <path class="l10" d="M95 150 L70 205"/>
+          <path class="l10" d="M145 150 L170 205"/>
+          <path class="l20" d="M335 150 L310 205"/>
+          <path class="l20" d="M385 150 L410 205"/>
+          <rect class="box" x="190" y="10" width="100" height="42" rx="6"/>
+          <text class="t" x="240" y="36" text-anchor="middle">Routeur</text>
+          <rect class="box" x="60" y="112" width="120" height="38" rx="6"/>
+          <text class="t" x="120" y="135" text-anchor="middle">Switch A</text>
+          <rect class="box" x="300" y="112" width="120" height="38" rx="6"/>
+          <text class="t" x="360" y="135" text-anchor="middle">Switch B</text>
+          <rect class="box" x="30" y="205" width="80" height="32" rx="6"/>
+          <text class="t" x="70" y="226" text-anchor="middle">PC 1</text>
+          <rect class="box" x="130" y="205" width="80" height="32" rx="6"/>
+          <text class="t" x="170" y="226" text-anchor="middle">PC 2</text>
+          <rect class="box" x="270" y="205" width="80" height="32" rx="6"/>
+          <text class="t" x="310" y="226" text-anchor="middle">PC 3</text>
+          <rect class="box" x="370" y="205" width="80" height="32" rx="6"/>
+          <text class="t" x="410" y="226" text-anchor="middle">PC 4</text>
+          <text class="tt" x="40" y="92">VLAN 10</text>
+          <text class="to" x="395" y="92">VLAN 20</text>
+        </svg>
+        <figcaption>Un réseau segmenté en deux VLAN, le type de maquette que je conçois et simule avec Packet Tracer.</figcaption>
+      </figure>
+    </header>
+
+    <section aria-labelledby="h-profil">
+      <h2 id="h-profil">Profil</h2>
+      <p class="lead">Je prépare un BTS SIO option SISR à l'UTEC de Melun et je cherche une alternance de technicien helpdesk ou de technicien systèmes et réseaux.</p>
+      <p>J'ai appris sur le terrain, au fil de plusieurs stages : maintenance et déploiement de postes, audit de cybersécurité, administration d'un domaine sous Proxmox. Je suis autonome, rigoureux et je tiens à suivre un incident jusqu'à sa cause réelle.</p>
+      <p>En dehors des cours, je monte mon propre home lab pour tester ce que j'apprends : virtualisation, pare-feu, cloud privé, serveur de jeu.</p>
+    </section>
+
+    <section id="competences" aria-labelledby="h-competences">
+      <h2 id="h-competences">Compétences</h2>
+      <dl class="skills">
+        <dt>Systèmes</dt>
+        <dd><ul class="chips">
+          <li>Windows (installation, configuration)</li><li>Linux</li><li>Active Directory</li>
+          <li>Déploiement de postes</li><li>Maintenance de postes</li><li>Diagnostic et dépannage matériel</li>
+        </ul></dd>
+
+        <dt>Réseaux</dt>
+        <dd><ul class="chips">
+          <li>Adressage IP</li><li>VLAN</li><li>Routage</li><li>Modèle OSI</li><li>DHCP</li><li>DNS</li>
+          <li>Wi-Fi</li><li>Pare-feu</li><li>Cisco Packet Tracer</li>
+        </ul></dd>
+
+        <dt>Virtualisation et serveurs</dt>
+        <dd><ul class="chips">
+          <li>Proxmox</li><li>VMware</li><li>Création et gestion de VM</li><li>Services web</li>
+          <li>Nextcloud</li><li>Serveurs de jeu</li>
+        </ul></dd>
+
+        <dt>Cybersécurité</dt>
+        <dd><ul class="chips">
+          <li>Audit de sécurité</li><li>Analyse des vulnérabilités</li><li>Renforcement des systèmes</li>
+          <li>Sécurisation de l'infrastructure et des postes</li>
+        </ul></dd>
+
+        <dt>Bureautique et formation</dt>
+        <dd><ul class="chips">
+          <li>Excel</li><li>Gestion et suivi de stocks</li><li>Référencement de produits</li><li>Formation des utilisateurs</li>
+        </ul></dd>
+
+        <dt>En entreprise</dt>
+        <dd><ul class="chips">
+          <li>Communication</li><li>Ponctualité</li><li>Respect</li><li>Sérieux</li><li>Rigueur</li>
+          <li>Efficacité</li><li>Esprit d'analyse</li><li>Autonomie</li><li>Esprit d'équipe</li><li>Sens du service</li>
+        </ul></dd>
+
+        <dt>Langues</dt>
+        <dd><ul class="chips">
+          <li>Anglais : B2</li><li>Japonais : B1, 2 ans d'apprentissage</li><li>Portugais : A2, langue paternelle</li>
+        </ul></dd>
+      </dl>
+    </section>
+
+    <section id="experience" aria-labelledby="h-experience">
+      <h2 id="h-experience">Expérience</h2>
+      <ol class="timeline">
+        <li class="entry">
+          <time>Depuis juin 2025</time>
+          <div>
+            <h3>Technicien systèmes et réseaux</h3>
+            <p class="org">SelfClimat Morvan</p>
+            <ul>
+              <li>Prise en main de Packet Tracer pour concevoir et simuler des architectures réseau.</li>
+              <li>Conception et animation d'une formation Excel pour les collaborateurs, afin de les rendre plus autonomes sur les outils bureautiques.</li>
+              <li>Création et administration d'un domaine réseau sous Proxmox, avec virtualisation et gestion des accès.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="entry">
+          <time>Nov. 2025 – déc. 2025</time>
+          <div>
+            <h3>Technicien informatique (stage)</h3>
+            <p class="org">Direction des Systèmes Informatiques et du Numérique, Département 77</p>
+            <ul>
+              <li>Démontage et diagnostic de PC portables pour identifier les pannes matérielles et préparer leur remise en service.</li>
+              <li>Tests et validation de matériel avant déploiement sur le parc.</li>
+              <li>Maquettage et configuration de postes de travail pour les agents du département, pour une mise en service rapide et fiable.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="entry">
+          <time>Juin 2024 – juil. 2024</time>
+          <div>
+            <h3>Auditeur cybersécurité (stage)</h3>
+            <p class="org">ModalM</p>
+            <ul>
+              <li>Participation à un audit de cybersécurité complet de l'entreprise, couvrant l'infrastructure et les postes utilisateurs.</li>
+              <li>Contribution au renforcement des systèmes après les vulnérabilités identifiées.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="entry">
+          <time>Janv. 2024 – févr. 2024</time>
+          <div>
+            <h3>Technicien informatique (stage)</h3>
+            <p class="org">MSI Computer SARL</p>
+            <ul>
+              <li>Référencement et mise à jour des produits informatiques sur tableur Excel.</li>
+              <li>Gestion des stocks et du matériel informatique de l'entreprise.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="entry">
+          <time>Févr. 2022</time>
+          <div>
+            <h3>Stagiaire informatique et réseaux</h3>
+            <p class="org">Groupe GB, périphérie de Toulouse</p>
+            <ul>
+              <li>Participation à l'installation et au déploiement de systèmes Windows 7 sur le parc informatique.</li>
+              <li>Vérification du bon fonctionnement des postes du secteur BTP.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="projets" aria-labelledby="h-projets">
+      <h2 id="h-projets">Projets</h2>
+
+      <h3 class="subhead">Projets personnels</h3>
+
+      <article class="project">
+        <h3>Home lab sous Proxmox</h3>
+        <p>Un hyperviseur Proxmox VE qui héberge mes machines virtuelles de test : stockage TrueNAS, supervision Zabbix, pare-feu pfSense, contrôleurs de domaine Active Directory et postes Windows.</p>
+        <ul class="chips"><li>Proxmox VE</li><li>Virtualisation</li><li>Supervision</li><li>Active Directory</li></ul>
+        <figure><img src="images/proxmox.png" alt="Interface Proxmox VE de mon home lab" loading="lazy" onerror="this.closest('figure').remove()"></figure>
+      </article>
+
+      <article class="project">
+        <h3>Serveur cloud Nextcloud</h3>
+        <p>Un cloud privé pour stocker et synchroniser mes fichiers, avec les applications de notes et de bureautique en ligne.</p>
+        <ul class="chips"><li>Nextcloud</li><li>Auto-hébergement</li><li>Administration serveur</li></ul>
+        <figure><img src="images/nextcloud.png" alt="Interface Nextcloud" loading="lazy" onerror="this.closest('figure').remove()"></figure>
+      </article>
+
+      <article class="project">
+        <h3>Configuration d'un pare-feu</h3>
+        <p>Mise en place d'un pare-feu entre le réseau local (LAN) et Internet (WAN) pour contrôler les flux qui entrent et sortent.</p>
+        <ul class="chips"><li>Pare-feu</li><li>LAN / WAN</li><li>Sécurité réseau</li></ul>
+      </article>
+
+      <article class="project">
+        <h3>Serveur de jeu Minecraft</h3>
+        <p>Installation et configuration d'un serveur de jeu. Un jeu en ligne, c'est aussi un serveur, un réseau et de la latence à surveiller.</p>
+        <ul class="chips"><li>Serveur de jeu</li><li>Installation</li><li>Configuration</li></ul>
+      </article>
+
+      <h3 class="subhead">Travaux de formation : machines virtuelles et réseau</h3>
+
+      <article class="project">
+        <h3>Domaine Windows Server</h3>
+        <p>Installation de serveurs à partir d'images ISO et administration d'un domaine : AD DS, DHCP, DNS, IIS et services de fichiers et de stockage. Prise en main de Linux et de Windows, de l'installation à la configuration.</p>
+        <ul class="chips"><li>AD DS</li><li>DHCP</li><li>DNS</li><li>IIS</li><li>Services de fichiers</li></ul>
+        <figure><img src="images/windows-server.png" alt="Gestionnaire de serveur Windows avec les rôles AD DS, DHCP, DNS, IIS" loading="lazy" onerror="this.closest('figure').remove()"></figure>
+      </article>
+
+      <article class="project">
+        <h3>Architecture réseau sous Packet Tracer</h3>
+        <p>Conception et simulation de réseaux : plan d'adressage IP, VLAN, routage et architecture complète avec routeurs, commutateurs, serveurs DHCP et postes.</p>
+        <ul class="chips"><li>Adressage IP</li><li>VLAN</li><li>Routage</li><li>Packet Tracer</li></ul>
+        <figure><img src="images/packet-tracer.png" alt="Schéma réseau réalisé avec Cisco Packet Tracer" loading="lazy" onerror="this.closest('figure').remove()"></figure>
+      </article>
+    </section>
+
+    <section id="formation" aria-labelledby="h-formation">
+      <h2 id="h-formation">Formation</h2>
+      <ol class="timeline">
+        <li class="entry">
+          <time>Sept. 2026 – sept. 2028</time>
+          <div>
+            <h3>BTS SIO option SISR</h3>
+            <p class="org">UTEC de Melun</p>
+            <p>Services informatiques aux organisations, option Solutions d'infrastructure, systèmes et réseaux.</p>
+          </div>
+        </li>
+        <li class="entry">
+          <time>2026</time>
+          <div>
+            <h3>Bac Pro CIEL</h3>
+            <p class="org">Lycée Clément Ader, Tournan-en-Brie</p>
+            <p>Cybersécurité, informatique et réseaux, électronique.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="loisirs" aria-labelledby="h-loisirs">
+      <h2 id="h-loisirs">Loisirs</h2>
+      <p class="lead">Ce que je fais quand je ne suis pas devant un terminal, et ce que ça m'apprend.</p>
+
+      <div class="hobbies">
+        <article class="hobby">
+          <h3>Sport automobile</h3>
+          <p>Je fais du karting depuis l'âge de 7 ans. Le kart est la porte d'entrée classique du pilotage : beaucoup de pilotes professionnels y ont commencé. Je suis aussi les 24 Heures du Mans, course d'endurance disputée sur le circuit de la Sarthe depuis 1923.</p>
+          <p class="gain"><b>Ce que j'en retire :</b> du sang-froid, des bons réflexes et un esprit d'analyse quand tout va vite.</p>
+        </article>
+
+        <article class="hobby">
+          <h3>Jeux vidéo</h3>
+          <p>Elden Ring (FromSoftware, 2022) pour son exigence, Zelda pour l'exploration, Pokémon pour la collection. J'aime aussi la réalité virtuelle, notamment VRChat, une plateforme sociale où chacun crée son avatar et ses mondes.</p>
+          <p class="gain"><b>Ce que j'en retire :</b> le goût de la technique : matériel, réseau, performances.</p>
+        </article>
+
+        <article class="hobby">
+          <h3>Japon</h3>
+          <p>Samouraïs, culture traditionnelle, cuisine. J'apprends le japonais depuis deux ans (niveau B1). L'écrit mélange trois systèmes : hiragana, katakana et kanji, ce qui demande de la méthode.</p>
+          <p class="gain"><b>Ce que j'en retire :</b> de la persévérance et de la rigueur.</p>
+        </article>
+
+        <article class="hobby">
+          <h3>Manga et animé</h3>
+          <p>Solo Leveling, d'abord un roman web coréen de Chugong, adapté en manhwa puis en animé en 2024. Naruto Shippuden, la suite de la série de Masashi Kishimoto.</p>
+          <p class="gain"><b>Ce que j'en retire :</b> de la curiosité pour la culture japonaise et ses récits.</p>
+        </article>
+
+        <article class="hobby">
+          <h3>Sport</h3>
+          <p>Arts martiaux orientaux, tennis et basket. Les arts martiaux reposent sur la maîtrise de soi et le respect de l'autre. Le tennis se joue seul, le basket en équipe : deux façons de progresser.</p>
+          <p class="gain"><b>Ce que j'en retire :</b> de la régularité et l'esprit d'équipe.</p>
+        </article>
+
+        <article class="hobby">
+          <h3>Star Wars</h3>
+          <p>Films et séries, dont la série animée The Clone Wars. Je monte aussi des LEGO Star Wars, parfois de grands modèles de vaisseaux : on suit une notice et on vérifie chaque étape, comme dans une procédure.</p>
+          <p class="gain"><b>Ce que j'en retire :</b> de la patience et le respect des procédures.</p>
+        </article>
+
+        <article class="hobby">
+          <h3>Voyager</h3>
+          <p>Découvrir d'autres pays, d'autres cultures et d'autres langues. Le portugais, langue de mon père, et le japonais m'y aident.</p>
+          <p class="gain"><b>Ce que j'en retire :</b> de l'adaptabilité face à des interlocuteurs différents.</p>
+        </article>
+
+        <article class="hobby">
+          <h3>Famille et animaux</h3>
+          <p>La famille et les animaux comptent parmi mes centres d'intérêt, et c'est là que je me ressource le plus.</p>
+          <p class="gain"><b>Ce que j'en retire :</b> de l'écoute et le sens du service.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="h-contact">
+      <h2 id="h-contact">Contact</h2>
+      <p>Je cherche une alternance de technicien helpdesk ou de technicien systèmes et réseaux, en Seine-et-Marne (77) et alentours.</p>
+      <p><a class="contact-mail" href="mailto:evandel77600@gmail.com">evandel77600@gmail.com</a></p>
+      <p><a class="btn line" href="CV_Evan_Delgado.pdf">Télécharger mon CV (PDF)</a></p>
+    </section>
+
+    <footer>
+      © <span id="year">2026</span> Evan Delgado
+    </footer>
+  </main>
+</div>
+
+<script>
+(function () {
+  var year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
+
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a'));
+  var targets = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+
+  function setActive(id) {
+    links.forEach(function (a) {
+      if (a.getAttribute('href') === '#' + id) a.setAttribute('aria-current', 'true');
+      else a.removeAttribute('aria-current');
+    });
+  }
+  setActive('profil');
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) setActive(e.target.id); });
+    }, { rootMargin: '-35% 0px -60% 0px' });
+    targets.forEach(function (t) { if (t) io.observe(t); });
+  }
+})();
+</script>
+</body>
+</html>
